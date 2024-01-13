@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang=en>
+  <head>
+    {{ template "partials/head.html" }}
+    <meta name="description" content="{{ .Meta.subtitle }}">
+  </head>
+  <title>
+    {{ .Meta.title }}
+  </title>
+  <body>
+    <main>
+      <div class="sidenav">
+        {{ template "partials/nav.html" }}
+      </div>
+      <article class="tagline">
+        {{ .Body }}
+      </article>
+    </main>
+    <footer>
+      {{ template "partials/footer.html" }}
+    </footer>
+  </body>
+</html>

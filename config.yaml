@@ -1,0 +1,8 @@
+title: icyphox
+# note the trailing slash!
+url: "https://icyphox.sh/"
+desc: "Computers, security and computer security."
+author:
+     name: "Anirudh Oppiliappan"
+     email: "x@icyphox.sh"
+default-template: text.html

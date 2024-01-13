@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang=en>
+  <head>
+    {{ template "partials/head.html" }}
+    <meta name="description" content="{{ index .Meta "subtitle" }}">
+  </head>
+  <title>
+    {{ index .Meta "title" }}
+  </title>
+  <body>
+    <main>
+      <div class="sidenav">
+        {{ template "partials/nav.html" }}
+      </div>
+      <article align="left">
+        <section class="post-date">
+        {{ $dateStr := index .Meta "date" }}
+        {{ $date := parsedate $dateStr }}
+        {{ $date.Format "02 Jan, 2006" }}
+        </section>
+
+        <h1>{{ index .Meta "title" }}</h1>
+        <h2 class="subtitle">{{ index .Meta "subtitle" }}</h2>
+        {{ .Body }}
+
+        <p class="muted" align="center">Questions or comments?
+        Send an
+        <a href="mailto:x@icyphox.sh?Subject=Re: {{ index .Meta "title" }}">email</a>.
+      </article>
+    </main>
+    <footer>
+      {{ template "partials/footer.html" }}
+    </footer>
+  </body>
+
+</html>
