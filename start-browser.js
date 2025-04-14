@@ -1,6 +1,8 @@
 import { spawn } from 'child_process';
 import { chromium } from 'playwright-core';
-// http module is no longer needed
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 // --- Configuration ---
 const PUBLIC_IP = '37.27.205.65'; // Your server's public IP
@@ -11,7 +13,13 @@ const SCREEN_HEIGHT = 1080;       // Desired height for Xvfb AND viewport
 const SCREEN_DEPTH = 30;          // Color depth (24 is highly compatible)
 const SCREEN_RESOLUTION = `${SCREEN_WIDTH}x${SCREEN_HEIGHT}x${SCREEN_DEPTH}`; // Combined string for Xvfb
 // Specify the exact path for the Chromium executable
-const CHROMIUM_EXECUTABLE_PATH = "/root/experiment/chromium/linux-1444897/chrome-linux/chrome";
+const CHROMIUM_EXECUTABLE_PATH = process.env.CHROMIUM_EXECUTABLE_PATH;
+
+if (!CHROMIUM_EXECUTABLE_PATH) {
+    console.error("ERROR: CHROMIUM_EXECUTABLE_PATH environment variable is not set!");
+    console.error("       User data script might have failed to find Chromium.");
+    process.exit(1);
+}
 
 // --- Main Execution ---
 async function run() {
